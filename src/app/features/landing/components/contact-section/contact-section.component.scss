@@ -1,0 +1,122 @@
+@use "sass:color";
+
+$primary-500: #6b21a8;
+$primary-100: #f3e8ff;
+$primary-900: #1a0a2e;
+$accent-500: #3b82f6;
+$error-500: #ef4444;
+$error-100: #fef2f2;
+$success-500: #22c55e;
+$success-100: #f0fdf4;
+$neutral-200: #e5e7eb;
+$neutral-500: #6b7280;
+$neutral-900: #111827;
+$white: #fff;
+
+.contact-section {
+  padding: 5rem 1rem;
+  background: linear-gradient(135deg, $primary-900, color.adjust($primary-900, $lightness: -5%));
+
+  @media (min-width: 768px) { padding: 6rem 1.5rem; }
+  @media (min-width: 1024px) { padding: 8rem 2rem; }
+
+  &__container { max-width: 1280px; margin: 0 auto; }
+
+  &__content {
+    display: grid;
+    gap: 3rem;
+    @media (min-width: 1024px) { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  }
+
+  &__info { color: $white; }
+  &__benefits { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+  &__form-wrapper {
+    background: $white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 25px 50px -12px #00000040;
+    @media (min-width: 768px) { padding: 2.5rem; }
+  }
+}
+
+.benefit-item {
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+
+  &__icon {
+    width: 3rem; height: 3rem;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba($white,.1);
+    border-radius: .75rem;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  &__content h4 { font-size: 1rem; font-weight: 600; margin: 0 0 .25rem; color: $white; }
+  &__content p { font-size: .875rem; color: rgba($white,.7); margin: 0; }
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.form-row {
+  display: grid; gap: 1.25rem;
+  @media (min-width: 640px) { grid-template-columns: 1fr 1fr; }
+}
+
+.form-group {
+  display: flex; flex-direction: column; gap: .5rem;
+
+  &--error .form-input, &--error .form-select, &--error .form-textarea {
+    border-color: $error-500; background: $error-100;
+    &:focus { border-color: $error-500; box-shadow: 0 0 0 3px rgba($error-500,.2); }
+  }
+}
+
+.form-label { font-size: .875rem; font-weight: 500; color: $neutral-900; .required { color: $error-500; } }
+
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: .75rem 1rem; font-size: 1rem;
+  border: 2px solid $neutral-200; border-radius: .5rem;
+  background: $white; color: $neutral-900; transition: .2s;
+  &::placeholder { color: $neutral-500; }
+  &:focus { outline: none; border-color: $primary-500; box-shadow: 0 0 0 3px rgba($primary-500,.2); }
+}
+
+.form-select {
+  appearance: none; cursor: pointer; padding-right: 2.5rem;
+  background: $white url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") right .75rem center/1.5em no-repeat;
+}
+
+.form-textarea { resize: vertical; min-height: 100px; }
+
+.form-error { font-size: .8125rem; color: $error-500; display: flex; align-items: center; gap: .25rem; &::before { content: '⚠'; font-size: .75rem; } }
+
+.form-actions { margin-top: .5rem; }
+
+.submit-button {
+  width: 100%; padding: 1rem 2rem; font-size: 1rem; font-weight: 600;
+  color: $white; background: linear-gradient(135deg, $primary-500, $accent-500);
+  border: none; border-radius: .5rem; cursor: pointer; transition: .3s;
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+
+  &:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 20px rgba($primary-500,.3); }
+  &:disabled { opacity: .7; cursor: not-allowed; }
+  &--loading { pointer-events: none; }
+  &__spinner { width: 1.25rem; height: 1.25rem; border: 2px solid rgba($white,.3); border-top-color: $white; border-radius: 50%; animation: spin .8s linear infinite; }
+}
+
+.success-message {
+  text-align: center; padding: 2rem;
+
+  &__icon { width: 4rem; height: 4rem; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; background: $success-100; color: $success-500; font-size: 2rem; font-weight: 700; border-radius: 50%; }
+  &__title { font-size: 1.5rem; font-weight: 700; color: $neutral-900; margin: 0 0 .75rem; }
+  &__text { font-size: 1rem; color: $neutral-500; margin: 0 0 2rem; line-height: 1.5; }
+  &__button { padding: .75rem 1.5rem; font-size: .9375rem; font-weight: 500; color: $primary-500; background: $primary-100; border: none; border-radius: .5rem; cursor: pointer; transition: .2s; &:hover { background: color.adjust($primary-100, $lightness: -5%); } }
+}
+
+@keyframes spin { to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,79 @@
+<header class="navbar" [class.navbar--scrolled]="isScrolled()">
+  <div class="navbar__container">
+    <!-- Logo -->
+    <a class="navbar__logo" href="#" (click)="scrollToSection('inicio'); $event.preventDefault()">
+      <span class="navbar__logo-icon">⚡</span>
+      <span class="navbar__logo-text">NexaSoft IA</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="navbar__nav" aria-label="Navegación principal">
+      <ul class="navbar__nav-list">
+        @for (item of navItems; track item.sectionId) {
+          <li class="navbar__nav-item">
+            <a
+              class="navbar__nav-link"
+              [href]="'#' + item.sectionId"
+              (click)="scrollToSection(item.sectionId); $event.preventDefault()"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- CTA Button -->
+    <div class="navbar__cta">
+      <app-cta-button
+        text="Solicitar demo"
+        variant="primary"
+        size="sm"
+        (clicked)="scrollToContact()"
+      />
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="navbar__mobile-toggle"
+      [class.navbar__mobile-toggle--open]="isMobileMenuOpen()"
+      (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="isMobileMenuOpen()"
+      aria-label="Menú de navegación"
+    >
+      <span class="navbar__mobile-toggle-bar"></span>
+      <span class="navbar__mobile-toggle-bar"></span>
+      <span class="navbar__mobile-toggle-bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  @if (isMobileMenuOpen()) {
+    <div class="navbar__mobile-menu" role="dialog" aria-label="Menú móvil">
+      <nav aria-label="Navegación móvil">
+        <ul class="navbar__mobile-list">
+          @for (item of navItems; track item.sectionId) {
+            <li class="navbar__mobile-item">
+              <a
+                class="navbar__mobile-link"
+                [href]="'#' + item.sectionId"
+                (click)="scrollToSection(item.sectionId); $event.preventDefault()"
+              >
+                {{ item.label }}
+              </a>
+            </li>
+          }
+          <li class="navbar__mobile-item navbar__mobile-item--cta">
+            <app-cta-button
+              text="Solicitar demo"
+              variant="primary"
+              size="md"
+              [fullWidth]="true"
+              (clicked)="scrollToContact()"
+            />
+          </li>
+        </ul>
+      </nav>
+    </div>
+  }
+</header>

@@ -1,0 +1,12 @@
+<header 
+  class="section-title"
+  [class.section-title--left]="align === 'left'"
+  [class.section-title--center]="align === 'center'"
+  [class.section-title--right]="align === 'right'"
+  [class.section-title--light]="light"
+>
+  <h2 class="section-title__heading">{{ title }}</h2>
+  @if (subtitle) {
+    <p class="section-title__subtitle">{{ subtitle }}</p>
+  }
+</header>

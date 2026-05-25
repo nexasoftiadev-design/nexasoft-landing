@@ -1,0 +1,60 @@
+<section id="integracion-ia" class="ai-section" aria-labelledby="ai-title">
+  <div class="ai-section__container">
+    <div class="ai-section__content">
+      <div class="ai-section__text">
+        <app-section-title
+          [title]="sectionTitle"
+          align="left"
+        />
+        
+        <p class="ai-section__description">
+          {{ mainDescription }}
+        </p>
+
+        <p class="ai-section__subtitle">
+          La inteligencia artificial puede ayudar a tu empresa a:
+        </p>
+      </div>
+
+      <div class="ai-section__visual">
+        <div class="ai-section__graphic" aria-hidden="true">
+          <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Brain/AI representation -->
+            <circle cx="150" cy="150" r="80" stroke="#6b21a8" stroke-width="2" fill="none" opacity="0.3"/>
+            <circle cx="150" cy="150" r="60" stroke="#a855f7" stroke-width="2" fill="none" opacity="0.5"/>
+            <circle cx="150" cy="150" r="40" stroke="#6b21a8" stroke-width="3" fill="#f3e8ff"/>
+            
+            <!-- Connection nodes -->
+            <circle cx="150" cy="70" r="8" fill="#3b82f6"/>
+            <circle cx="220" cy="120" r="8" fill="#a855f7"/>
+            <circle cx="220" cy="180" r="8" fill="#3b82f6"/>
+            <circle cx="150" cy="230" r="8" fill="#a855f7"/>
+            <circle cx="80" cy="180" r="8" fill="#3b82f6"/>
+            <circle cx="80" cy="120" r="8" fill="#a855f7"/>
+            
+            <!-- Lines connecting to center -->
+            <line x1="150" y1="70" x2="150" y2="110" stroke="#6b21a8" stroke-width="2" opacity="0.5"/>
+            <line x1="220" y1="120" x2="190" y2="130" stroke="#6b21a8" stroke-width="2" opacity="0.5"/>
+            <line x1="220" y1="180" x2="190" y2="170" stroke="#6b21a8" stroke-width="2" opacity="0.5"/>
+            <line x1="150" y1="230" x2="150" y2="190" stroke="#6b21a8" stroke-width="2" opacity="0.5"/>
+            <line x1="80" y1="180" x2="110" y2="170" stroke="#6b21a8" stroke-width="2" opacity="0.5"/>
+            <line x1="80" y1="120" x2="110" y2="130" stroke="#6b21a8" stroke-width="2" opacity="0.5"/>
+            
+            <!-- Center icon -->
+            <text x="150" y="158" text-anchor="middle" font-size="32">🧠</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-section__capabilities">
+      @for (cap of capabilities; track cap.title) {
+        <article class="capability-card">
+          <span class="capability-card__icon" aria-hidden="true">{{ cap.icon }}</span>
+          <h3 class="capability-card__title">{{ cap.title }}</h3>
+          <p class="capability-card__description">{{ cap.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

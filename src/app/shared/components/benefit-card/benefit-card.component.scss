@@ -1,0 +1,75 @@
+// Variables
+$primary-500: #6b21a8;
+$primary-100: #f3e8ff;
+$primary-900: #1a0a2e;
+$accent-500: #3b82f6;
+$neutral-100: #f9fafb;
+$neutral-500: #6b7280;
+$neutral-900: #111827;
+$white: #ffffff;
+
+$breakpoint-md: 768px;
+
+.benefit-card {
+  background: $white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba($primary-500, 0.1);
+
+  @media (min-width: $breakpoint-md) {
+    padding: 2rem;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba($primary-500, 0.15);
+    border-color: rgba($primary-500, 0.3);
+  }
+
+  &__icon {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    background: linear-gradient(135deg, $primary-100 0%, rgba($primary-500, 0.15) 100%);
+    border-radius: 1rem;
+    margin-bottom: 1.25rem;
+
+    @media (min-width: $breakpoint-md) {
+      width: 4.5rem;
+      height: 4.5rem;
+      font-size: 2.25rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $neutral-900;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.3;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__description {
+    font-size: 0.9375rem;
+    color: $neutral-500;
+    line-height: 1.6;
+    margin: 0;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1rem;
+    }
+  }
+}

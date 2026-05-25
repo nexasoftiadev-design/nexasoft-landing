@@ -1,0 +1,33 @@
+<app-navbar />
+
+<main>
+  <app-hero-section
+    (requestDemo)="onRequestDemo()"
+    (viewServices)="onViewServices()"
+  />
+
+  <!-- Services Section -->
+  <app-services-section />
+
+  <!-- Detail Sections - Soluciones -->
+  <div id="soluciones">
+    <app-ai-integration-section />
+    <app-saas-section />
+    <app-virtual-assistant-section />
+    <app-hooks-section />
+  </div>
+
+  <!-- Benefits Section -->
+  <app-benefits-section />
+
+  <!-- Packages Section -->
+  <app-packages-section (requestQuote)="onPackageQuote($event)" />
+
+  <!-- Contact Section -->
+  <app-contact-section />
+</main>
+
+<app-footer />
+
+<!-- WhatsApp Floating Button -->
+<app-whatsapp-button />

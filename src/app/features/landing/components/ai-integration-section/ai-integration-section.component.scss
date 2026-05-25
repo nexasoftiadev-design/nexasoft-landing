@@ -1,0 +1,154 @@
+@use "sass:color";
+
+// Variables
+$primary-500: #6b21a8;
+$primary-100: #f3e8ff;
+$primary-900: #1a0a2e;
+$accent-500: #3b82f6;
+$neutral-100: #f9fafb;
+$neutral-200: #e5e7eb;
+$neutral-500: #6b7280;
+$neutral-900: #111827;
+$white: #ffffff;
+
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+.ai-section {
+  padding: 5rem 1rem;
+  background: linear-gradient(135deg, $primary-900 0%, color.adjust($primary-900, $lightness: -5%) 100%);
+
+  @media (min-width: $breakpoint-md) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 8rem 2rem;
+  }
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+
+  &__text {
+    color: $white;
+
+    :deep(.section-title__heading) {
+      color: $white;
+    }
+
+    :deep(.section-title__subtitle) {
+      color: rgba($white, 0.8);
+    }
+  }
+
+  &__description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba($white, 0.9);
+    margin: 0 0 1.5rem 0;
+    padding: 1.25rem;
+    background: rgba($primary-500, 0.2);
+    border-left: 4px solid $accent-500;
+    border-radius: 0 0.5rem 0.5rem 0;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: rgba($white, 0.8);
+    margin: 0;
+  }
+
+  &__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__graphic {
+    width: 100%;
+    max-width: 300px;
+
+    svg {
+      width: 100%;
+      height: auto;
+      animation: pulse 3s ease-in-out infinite;
+    }
+  }
+
+  &__capabilities {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media (min-width: $breakpoint-sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+.capability-card {
+  background: rgba($white, 0.05);
+  border: 1px solid rgba($white, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba($white, 0.1);
+    border-color: rgba($accent-500, 0.5);
+    transform: translateY(-4px);
+  }
+
+  &__icon {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $white;
+    margin: 0 0 0.5rem 0;
+  }
+
+  &__description {
+    font-size: 0.9375rem;
+    color: rgba($white, 0.7);
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}

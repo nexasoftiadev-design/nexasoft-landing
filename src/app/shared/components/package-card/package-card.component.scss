@@ -1,0 +1,128 @@
+// Variables
+$primary-500: #6b21a8;
+$primary-100: #f3e8ff;
+$primary-900: #1a0a2e;
+$accent-500: #3b82f6;
+$neutral-100: #f9fafb;
+$neutral-200: #e5e7eb;
+$neutral-500: #6b7280;
+$neutral-900: #111827;
+$white: #ffffff;
+
+$breakpoint-md: 768px;
+
+.package-card {
+  position: relative;
+  background: $white;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 2px solid $neutral-200;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: $primary-500;
+    box-shadow: 0 10px 40px rgba($primary-500, 0.15);
+  }
+
+  &--highlighted {
+    border-color: $primary-500;
+    background: linear-gradient(180deg, $white 0%, $primary-100 100%);
+    transform: scale(1.02);
+    box-shadow: 0 20px 50px rgba($primary-500, 0.2);
+
+    @media (min-width: $breakpoint-md) {
+      transform: scale(1.05);
+    }
+
+    &:hover {
+      transform: scale(1.03);
+
+      @media (min-width: $breakpoint-md) {
+        transform: scale(1.07);
+      }
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, $primary-500 0%, $accent-500 100%);
+    color: $white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba($primary-500, 0.3);
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-top: 0.5rem;
+  }
+
+  &__name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $neutral-900;
+    margin: 0 0 0.75rem 0;
+
+    .package-card--highlighted & {
+      color: $primary-500;
+    }
+  }
+
+  &__description {
+    font-size: 0.9375rem;
+    color: $neutral-500;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  &__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    flex-grow: 1;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid $neutral-100;
+    font-size: 0.9375rem;
+    color: $neutral-900;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__feature-icon {
+    color: $primary-500;
+    font-weight: 700;
+    flex-shrink: 0;
+    width: 1.25rem;
+    text-align: center;
+  }
+
+  &__audience {
+    font-size: 0.8125rem;
+    color: $neutral-500;
+    text-align: center;
+    margin: 0 0 1.5rem 0;
+    font-style: italic;
+  }
+
+  &__footer {
+    margin-top: auto;
+  }
+}

@@ -1,0 +1,59 @@
+// Variables
+$primary-100: #f3e8ff;
+$primary-500: #6b21a8;
+$primary-900: #1a0a2e;
+$neutral-100: #f9fafb;
+$neutral-500: #6b7280;
+$neutral-900: #111827;
+$white: #ffffff;
+
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+.section {
+  padding: 5rem 1rem;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 8rem 2rem;
+  }
+
+  &--alt {
+    background: $neutral-100;
+  }
+
+  &--placeholder {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    h2 {
+      color: $neutral-900;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: $neutral-500;
+      font-style: italic;
+    }
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0 1.5rem;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 0 2rem;
+  }
+}

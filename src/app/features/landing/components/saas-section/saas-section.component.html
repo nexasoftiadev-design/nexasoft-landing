@@ -1,0 +1,45 @@
+<section id="saas" class="saas-section" aria-labelledby="saas-title">
+  <div class="saas-section__container">
+    <app-section-title
+      [title]="sectionTitle"
+      [subtitle]="sectionSubtitle"
+      align="center"
+    />
+
+    <div class="saas-section__content">
+      <!-- Modules Grid -->
+      <div class="saas-section__modules">
+        <h3 class="saas-section__modules-title">Módulos disponibles</h3>
+        <div class="modules-grid">
+          @for (module of modules; track module.name) {
+            <article class="module-card">
+              <span class="module-card__icon" aria-hidden="true">{{ module.icon }}</span>
+              <div class="module-card__content">
+                <h4 class="module-card__name">{{ module.name }}</h4>
+                <p class="module-card__description">{{ module.description }}</p>
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+
+      <!-- Features Sidebar -->
+      <aside class="saas-section__features">
+        <div class="features-panel">
+          <div class="features-panel__header">
+            <span class="features-panel__icon" aria-hidden="true">☁️</span>
+            <h3 class="features-panel__title">Ventajas del modelo SaaS</h3>
+          </div>
+          <ul class="features-panel__list">
+            @for (feature of features; track feature) {
+              <li class="features-panel__item">
+                <span class="features-panel__check" aria-hidden="true">✓</span>
+                {{ feature }}
+              </li>
+            }
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

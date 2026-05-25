@@ -1,0 +1,9 @@
+<button
+  [type]="type"
+  [class]="buttonClasses"
+  [disabled]="disabled"
+  (click)="onClick()"
+  [attr.aria-disabled]="disabled ? 'true' : null"
+>
+  {{ text }}
+</button>

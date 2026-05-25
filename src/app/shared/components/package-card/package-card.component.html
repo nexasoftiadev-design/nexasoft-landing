@@ -1,0 +1,45 @@
+<article 
+  class="package-card"
+  [class.package-card--highlighted]="package.highlighted"
+  [attr.aria-labelledby]="'package-' + package.id"
+>
+  @if (package.highlighted) {
+    <div class="package-card__badge">
+      <span>Más popular</span>
+    </div>
+  }
+
+  <header class="package-card__header">
+    <h3 [id]="'package-' + package.id" class="package-card__name">
+      {{ package.name }}
+    </h3>
+    <p class="package-card__description">
+      {{ package.description }}
+    </p>
+  </header>
+
+  <ul class="package-card__features" aria-label="Características incluidas">
+    @for (feature of package.features; track feature) {
+      <li class="package-card__feature">
+        <span class="package-card__feature-icon" aria-hidden="true">✓</span>
+        {{ feature }}
+      </li>
+    }
+  </ul>
+
+  @if (package.targetAudience) {
+    <p class="package-card__audience">
+      {{ package.targetAudience }}
+    </p>
+  }
+
+  <footer class="package-card__footer">
+    <app-cta-button
+      [text]="package.ctaText"
+      [variant]="package.highlighted ? 'primary' : 'outline'"
+      size="lg"
+      [fullWidth]="true"
+      (clicked)="onRequestQuote()"
+    />
+  </footer>
+</article>

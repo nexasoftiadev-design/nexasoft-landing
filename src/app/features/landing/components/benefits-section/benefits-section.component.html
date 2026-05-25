@@ -1,0 +1,15 @@
+<section id="beneficios" class="benefits-section" aria-labelledby="benefits-title">
+  <div class="benefits-section__container">
+    <app-section-title
+      [title]="sectionTitle"
+      [subtitle]="sectionSubtitle"
+      align="center"
+    />
+
+    <div class="benefits-section__grid">
+      @for (benefit of benefits; track benefit.id) {
+        <app-benefit-card [benefit]="benefit" />
+      }
+    </div>
+  </div>
+</section>

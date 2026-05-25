@@ -1,0 +1,18 @@
+<section id="paquetes" class="packages-section" aria-labelledby="packages-title">
+  <div class="packages-section__container">
+    <app-section-title
+      [title]="sectionTitle"
+      [subtitle]="sectionSubtitle"
+      align="center"
+    />
+
+    <div class="packages-section__grid">
+      @for (pkg of packages; track pkg.id) {
+        <app-package-card
+          [package]="pkg"
+          (requestQuote)="onPackageQuote($event)"
+        />
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,68 @@
+<section id="integraciones" class="hooks-section" aria-labelledby="hooks-title">
+  <div class="hooks-section__container">
+    <app-section-title
+      [title]="sectionTitle"
+      [subtitle]="sectionSubtitle"
+      align="center"
+    />
+
+    <div class="hooks-section__content">
+      <!-- Integrations Flow -->
+      <div class="hooks-section__flow">
+        <div class="flow-visualization" aria-hidden="true">
+          <div class="flow-center">
+            <div class="flow-center__hub">
+              <span class="flow-center__icon">⚡</span>
+              <span class="flow-center__label">NexaSoft</span>
+            </div>
+          </div>
+          
+          <div class="flow-nodes">
+            @for (integration of integrations; track integration.name; let i = $index) {
+              <div 
+                class="flow-node"
+                [style.--delay]="i * 0.1 + 's'"
+              >
+                <span class="flow-node__icon">{{ integration.icon }}</span>
+                <span class="flow-node__name">{{ integration.name }}</span>
+                <span class="flow-node__badge">{{ integration.category }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits Cards -->
+      <div class="hooks-section__benefits">
+        @for (benefit of benefits; track benefit.title) {
+          <article class="benefit-card-alt">
+            <span class="benefit-card-alt__icon" aria-hidden="true">{{ benefit.icon }}</span>
+            <h3 class="benefit-card-alt__title">{{ benefit.title }}</h3>
+            <p class="benefit-card-alt__description">{{ benefit.description }}</p>
+          </article>
+        }
+      </div>
+    </div>
+
+    <!-- Code Example Preview -->
+    <div class="hooks-section__code" aria-hidden="true">
+      <div class="code-preview">
+        <div class="code-preview__header">
+          <span class="code-preview__dot"></span>
+          <span class="code-preview__dot"></span>
+          <span class="code-preview__dot"></span>
+          <span class="code-preview__filename">webhook-example.json</span>
+        </div>
+        <pre class="code-preview__body"><code>{{ '{' }}
+  "event": "nuevo_ticket",
+  "data": {{ '{' }}
+    "id": "TK-2024-001",
+    "cliente": "Empresa ABC",
+    "prioridad": "alta"
+  {{ '}' }},
+  "timestamp": "2024-01-15T10:30:00Z"
+{{ '}' }}</code></pre>
+      </div>
+    </div>
+  </div>
+</section>

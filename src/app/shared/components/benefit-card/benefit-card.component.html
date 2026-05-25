@@ -1,0 +1,13 @@
+<article class="benefit-card" [attr.aria-labelledby]="'benefit-' + benefit.id">
+  <div class="benefit-card__icon" aria-hidden="true">
+    {{ benefit.icon }}
+  </div>
+  
+  <h3 [id]="'benefit-' + benefit.id" class="benefit-card__title">
+    {{ benefit.title }}
+  </h3>
+  
+  <p class="benefit-card__description">
+    {{ benefit.description }}
+  </p>
+</article>

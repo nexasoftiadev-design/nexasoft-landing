@@ -1,0 +1,191 @@
+<section id="contacto" class="contact-section" aria-labelledby="contact-title">
+  <div class="contact-section__container">
+    <div class="contact-section__content">
+      <!-- Left Column - Info -->
+      <div class="contact-section__info">
+        <app-section-title
+          [title]="sectionTitle"
+          [subtitle]="sectionSubtitle"
+          align="left"
+          [light]="true"
+        />
+
+        <div class="contact-section__benefits">
+          <div class="benefit-item">
+            <span class="benefit-item__icon" aria-hidden="true">⚡</span>
+            <div class="benefit-item__content">
+              <h4>Respuesta rápida</h4>
+              <p>Te contactamos en menos de 24 horas</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-item__icon" aria-hidden="true">💬</span>
+            <div class="benefit-item__content">
+              <h4>Asesoría gratuita</h4>
+              <p>Evaluamos tu proyecto sin compromiso</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-item__icon" aria-hidden="true">🎯</span>
+            <div class="benefit-item__content">
+              <h4>Solución personalizada</h4>
+              <p>Adaptamos nuestros servicios a tu negocio</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Form -->
+      <div class="contact-section__form-wrapper">
+        @if (isSubmitted) {
+          <!-- Success Message -->
+          <div class="success-message" role="alert">
+            <div class="success-message__icon" aria-hidden="true">✓</div>
+            <h3 class="success-message__title">¡Mensaje enviado!</h3>
+            <p class="success-message__text">{{ submitMessage }}</p>
+            <button 
+              type="button" 
+              class="success-message__button"
+              (click)="resetForm()"
+            >
+              Enviar otro mensaje
+            </button>
+          </div>
+        } @else {
+          <!-- Contact Form -->
+          <form 
+            [formGroup]="contactForm" 
+            (ngSubmit)="onSubmit()"
+            class="contact-form"
+            novalidate
+          >
+            <div class="form-row">
+              <div class="form-group" [class.form-group--error]="isFieldInvalid('nombre')">
+                <label for="nombre" class="form-label">
+                  Nombre <span class="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="nombre"
+                  formControlName="nombre"
+                  class="form-input"
+                  placeholder="Tu nombre completo"
+                  [attr.aria-invalid]="isFieldInvalid('nombre')"
+                  [attr.aria-describedby]="isFieldInvalid('nombre') ? 'nombre-error' : null"
+                />
+                @if (isFieldInvalid('nombre')) {
+                  <span id="nombre-error" class="form-error" role="alert">
+                    {{ getErrorMessage('nombre') }}
+                  </span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label for="empresa" class="form-label">Empresa</label>
+                <input
+                  type="text"
+                  id="empresa"
+                  formControlName="empresa"
+                  class="form-input"
+                  placeholder="Nombre de tu empresa"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group" [class.form-group--error]="isFieldInvalid('correo')">
+                <label for="correo" class="form-label">
+                  Correo electrónico <span class="required">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="correo"
+                  formControlName="correo"
+                  class="form-input"
+                  placeholder="tu@email.com"
+                  [attr.aria-invalid]="isFieldInvalid('correo')"
+                  [attr.aria-describedby]="isFieldInvalid('correo') ? 'correo-error' : null"
+                />
+                @if (isFieldInvalid('correo')) {
+                  <span id="correo-error" class="form-error" role="alert">
+                    {{ getErrorMessage('correo') }}
+                  </span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  formControlName="telefono"
+                  class="form-input"
+                  placeholder="+57 300 000 0000"
+                />
+              </div>
+            </div>
+
+            <div class="form-group" [class.form-group--error]="isFieldInvalid('servicioInteres')">
+              <label for="servicioInteres" class="form-label">
+                Servicio de interés <span class="required">*</span>
+              </label>
+              <select
+                id="servicioInteres"
+                formControlName="servicioInteres"
+                class="form-select"
+                [attr.aria-invalid]="isFieldInvalid('servicioInteres')"
+                [attr.aria-describedby]="isFieldInvalid('servicioInteres') ? 'servicio-error' : null"
+              >
+                <option value="">Selecciona un servicio</option>
+                @for (option of serviceOptions; track option.value) {
+                  <option [value]="option.value">{{ option.label }}</option>
+                }
+              </select>
+              @if (isFieldInvalid('servicioInteres')) {
+                <span id="servicio-error" class="form-error" role="alert">
+                  {{ getErrorMessage('servicioInteres') }}
+                </span>
+              }
+            </div>
+
+            <div class="form-group" [class.form-group--error]="isFieldInvalid('mensaje')">
+              <label for="mensaje" class="form-label">
+                Mensaje <span class="required">*</span>
+              </label>
+              <textarea
+                id="mensaje"
+                formControlName="mensaje"
+                class="form-textarea"
+                rows="4"
+                placeholder="Cuéntanos sobre tu proyecto o necesidad..."
+                [attr.aria-invalid]="isFieldInvalid('mensaje')"
+                [attr.aria-describedby]="isFieldInvalid('mensaje') ? 'mensaje-error' : null"
+              ></textarea>
+              @if (isFieldInvalid('mensaje')) {
+                <span id="mensaje-error" class="form-error" role="alert">
+                  {{ getErrorMessage('mensaje') }}
+                </span>
+              }
+            </div>
+
+            <div class="form-actions">
+              <button
+                type="submit"
+                class="submit-button"
+                [class.submit-button--loading]="isSubmitting"
+                [disabled]="isSubmitting"
+              >
+                @if (isSubmitting) {
+                  <span class="submit-button__spinner" aria-hidden="true"></span>
+                  Enviando...
+                } @else {
+                  Enviar mensaje
+                }
+              </button>
+            </div>
+          </form>
+        }
+      </div>
+    </div>
+  </div>
+</section>

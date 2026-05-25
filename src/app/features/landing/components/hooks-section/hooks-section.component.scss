@@ -1,0 +1,244 @@
+@use "sass:color";
+
+// Variables
+$primary-500: #6b21a8;
+$primary-100: #f3e8ff;
+$accent-500: #3b82f6;
+$accent-100: #dbeafe;
+$neutral-100: #f9fafb;
+$neutral-200: #e5e7eb;
+$neutral-500: #6b7280;
+$neutral-800: #1f2937;
+$neutral-900: #111827;
+$white: #ffffff;
+
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+.hooks-section {
+  padding: 5rem 1rem;
+  background: $white;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 8rem 2rem;
+  }
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  &__content {
+    margin-bottom: 4rem;
+  }
+
+  &__flow {
+    margin-bottom: 4rem;
+  }
+
+  &__benefits {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__code {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.flow-visualization {
+  position: relative;
+  padding: 3rem 0;
+}
+
+.flow-center {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+
+  &__hub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, $primary-500 0%, color.adjust($primary-500, $lightness: -10%) 100%);
+    border-radius: 50%;
+    box-shadow: 0 10px 40px rgba($primary-500, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  &__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $white;
+  }
+}
+
+.flow-nodes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+
+  @media (min-width: $breakpoint-md) {
+    gap: 1.5rem;
+  }
+}
+
+.flow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: $neutral-100;
+  border: 2px solid $neutral-200;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.5s ease-out backwards;
+  animation-delay: var(--delay, 0s);
+
+  &:hover {
+    border-color: $accent-500;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba($accent-500, 0.15);
+  }
+
+  &__icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: $neutral-900;
+    margin-bottom: 0.5rem;
+  }
+
+  &__badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background: $accent-100;
+    color: $accent-500;
+    border-radius: 1rem;
+    font-weight: 500;
+  }
+}
+
+.benefit-card-alt {
+  padding: 2rem;
+  background: $neutral-100;
+  border-radius: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $primary-100;
+  }
+
+  &__icon {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $neutral-900;
+    margin: 0 0 0.5rem 0;
+  }
+
+  &__description {
+    font-size: 0.9375rem;
+    color: $neutral-500;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+.code-preview {
+  width: 100%;
+  max-width: 500px;
+  background: $neutral-800;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: color.adjust($neutral-800, $lightness: -5%);
+  }
+
+  &__dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+
+    &:nth-child(1) { background: #ef4444; }
+    &:nth-child(2) { background: #eab308; }
+    &:nth-child(3) { background: #22c55e; }
+  }
+
+  &__filename {
+    margin-left: auto;
+    font-size: 0.8125rem;
+    color: $neutral-500;
+    font-family: monospace;
+  }
+
+  &__body {
+    padding: 1.5rem;
+    margin: 0;
+    overflow-x: auto;
+
+    code {
+      font-family: 'Fira Code', 'Monaco', monospace;
+      font-size: 0.875rem;
+      color: #e5e7eb;
+      line-height: 1.6;
+      white-space: pre;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

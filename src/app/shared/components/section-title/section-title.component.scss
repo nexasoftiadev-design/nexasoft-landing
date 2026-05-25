@@ -1,0 +1,70 @@
+// Variables
+$primary-500: #6b21a8;
+$primary-100: #f3e8ff;
+$neutral-100: #f9fafb;
+$neutral-500: #6b7280;
+$neutral-900: #111827;
+$white: #ffffff;
+
+$breakpoint-md: 768px;
+
+.section-title {
+  margin-bottom: 3rem;
+
+  @media (min-width: $breakpoint-md) {
+    margin-bottom: 4rem;
+  }
+
+  // Alignment modifiers
+  &--left {
+    text-align: left;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  // Light variant for dark backgrounds
+  &--light {
+    .section-title__heading {
+      color: $white;
+    }
+
+    .section-title__subtitle {
+      color: rgba($white, 0.8);
+    }
+  }
+
+  &__heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $neutral-900;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    color: $neutral-500;
+    margin: 0;
+    max-width: 600px;
+    line-height: 1.6;
+
+    .section-title--center & {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1.25rem;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+<section id="asistente-virtual" class="assistant-section" aria-labelledby="assistant-title">
+  <div class="assistant-section__container">
+    <div class="assistant-section__header">
+      <app-section-title
+        [title]="sectionTitle"
+        [subtitle]="sectionSubtitle"
+        align="center"
+        [light]="true"
+      />
+
+      <!-- Stats -->
+      <div class="assistant-section__stats">
+        @for (stat of stats; track stat.label) {
+          <div class="stat-item">
+            <span class="stat-item__value">{{ stat.value }}</span>
+            <span class="stat-item__label">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Use Cases Grid -->
+    <div class="assistant-section__cases">
+      @for (useCase of useCases; track useCase.title) {
+        <article 
+          class="use-case-card"
+          [class.use-case-card--highlight]="useCase.highlight"
+        >
+          <div class="use-case-card__icon-wrapper">
+            <span class="use-case-card__icon" aria-hidden="true">{{ useCase.icon }}</span>
+          </div>
+          <h3 class="use-case-card__title">{{ useCase.title }}</h3>
+          <p class="use-case-card__description">{{ useCase.description }}</p>
+        </article>
+      }
+    </div>
+
+    <!-- Visual Chat Preview -->
+    <div class="assistant-section__preview" aria-hidden="true">
+      <div class="chat-preview">
+        <div class="chat-preview__header">
+          <span class="chat-preview__dot"></span>
+          <span class="chat-preview__dot"></span>
+          <span class="chat-preview__dot"></span>
+          <span class="chat-preview__title">NexaSoft Asistente</span>
+        </div>
+        <div class="chat-preview__body">
+          <div class="chat-bubble chat-bubble--bot">
+            <span class="chat-bubble__avatar">🤖</span>
+            <p>¡Hola! Soy el asistente virtual de NexaSoft. ¿En qué puedo ayudarte hoy?</p>
+          </div>
+          <div class="chat-bubble chat-bubble--user">
+            <p>Quiero información sobre sus servicios</p>
+          </div>
+          <div class="chat-bubble chat-bubble--bot">
+            <span class="chat-bubble__avatar">🤖</span>
+            <p>¡Con gusto! Ofrecemos soluciones de IA, SaaS y automatización. ¿Qué área te interesa más?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

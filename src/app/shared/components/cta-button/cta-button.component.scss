@@ -1,0 +1,102 @@
+// Primary colors
+$primary-500: #6b21a8;
+$primary-700: #2d1b4e;
+$accent-500: #3b82f6;
+$accent-700: #1e3a8a;
+$white: #ffffff;
+$neutral-300: #d1d5db;
+$neutral-500: #6b7280;
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: 2px solid $primary-500;
+    outline-offset: 2px;
+  }
+
+  // Sizes
+  &--sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  &--md {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  &--lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+
+  // Variants
+  &--primary {
+    background: linear-gradient(135deg, $primary-500 0%, $accent-500 100%);
+    color: $white;
+    border-color: transparent;
+
+    &:hover {
+      background: linear-gradient(135deg, $primary-700 0%, $accent-700 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba($primary-500, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &--secondary {
+    background: $white;
+    color: $primary-500;
+    border-color: $primary-500;
+
+    &:hover {
+      background: $primary-500;
+      color: $white;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: $white;
+    border-color: $white;
+
+    &:hover {
+      background: $white;
+      color: $primary-500;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // States
+  &--full-width {
+    width: 100%;
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
