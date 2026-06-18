@@ -13,7 +13,7 @@ export class HeroSectionComponent {
   @Output() requestDemo = new EventEmitter<void>();
   @Output() viewServices = new EventEmitter<void>();
 
-  headline = 'Software, IA y automatización impulsada por Inteligencia Artificial para transformar tu negocio';
+  headline = 'Software, IA y automatización para empresas modernas';
   subtitle = 'Creamos soluciones digitales personalizadas para optimizar procesos, centralizar información y mejorar la atención de tus clientes.';
 
   onRequestDemo(): void {
